@@ -57,7 +57,7 @@ class MyPlane{
 			_this.x=x
 			_this.y=y
 		})
-		/*touch.on("document","touchdrag",function(e){
+		/*touch.on("document","drag",function(e){
 			var e = e || event;
 			var x = e.clientX-$("#can")[0].offsetLeft-_this.w/4
 			var y = e.clientY-$("#can")[0].offsetTop-_this.h/4
