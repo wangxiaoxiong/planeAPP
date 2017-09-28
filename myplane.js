@@ -51,6 +51,15 @@ class MyPlane{
 			e.preventDefault();
 			alert(1)
 		})
+		touch.on($("#can")[0],"touchdrag",function(e){
+			var e = e || event;
+			var x = e.clientX-$("#can")[0].offsetLeft-_this.w/4
+			var y = e.clientY-$("#can")[0].offsetTop-_this.h/4
+			x=Math.min( Math.max( 0,x ),$("#can")[0].width-_this.w/2 )
+			y=Math.min( Math.max( 0,y ),$("#can")[0].height-_this.h/2 )
+			_this.x=x
+			_this.y=y
+		})
 		/*touch.on("document","touchdrag",function(e){
 			var e = e || event;
 			var x = e.clientX-$("#can")[0].offsetLeft-_this.w/4
