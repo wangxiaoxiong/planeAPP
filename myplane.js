@@ -38,6 +38,7 @@ class MyPlane{
 	move(){		
 		var _this=this;
 		window.addEventListener('touchmove',function(e){
+			e.preventDefault();
 			var x=e.touches[0].clientX-_this.w/4
 			var y=e.touches[0].clientY-_this.h/4
 
