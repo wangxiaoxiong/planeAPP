@@ -21,6 +21,7 @@ class MyPlane{
 	}
 	draw(o2d){
 		if( this.type>0 ){
+			e.preventDefault();
 			var x = MYPLANE_SIZE[this.type].x
 			var y = MYPLANE_SIZE[this.type].y
 			var w = MYPLANE_SIZE[this.type].w
@@ -49,8 +50,8 @@ class MyPlane{
 		}*/
 		touch.on($("#can")[0],"touchdrag",function(e){
 			var e = e || event;
-			var x = e.clientX-$("#can")[0].offsetLeft-_this.w/4
-			var y = e.clientY-$("#can")[0].offsetTop-_this.h/4
+			var x = e.clientX-$("#can")[0].position().left-_this.w/4
+			var y = e.clientY-$("#can")[0].position().top-_this.h/4
 			x=Math.min( Math.max( 0,x ),$("#can")[0].width-_this.w/2 )
 			y=Math.min( Math.max( 0,y ),$("#can")[0].height-_this.h/2 )
 			_this.x=x
