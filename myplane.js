@@ -50,8 +50,8 @@ class MyPlane{
 		}*/
 		touch.on($("#can")[0],"touchdrag",function(e){
 			var e = e || event;
-			var x = e.clientX-$("#can")[0].position().left-_this.w/4
-			var y = e.clientY-$("#can")[0].position().top-_this.h/4
+			var x = e.clientX-_this.w/4
+			var y = e.clientY-_this.h/4
 			x=Math.min( Math.max( 0,x ),$("#can")[0].width-_this.w/2 )
 			y=Math.min( Math.max( 0,y ),$("#can")[0].height-_this.h/2 )
 			_this.x=x
