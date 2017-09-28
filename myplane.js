@@ -48,7 +48,7 @@ class MyPlane{
 			}			
 		}*/
 		touch.on("document","touchstart",function(e){
-			console.log(1)
+			alert(1)
 		})
 		/*touch.on("document","touchdrag",function(e){
 			var e = e || event;
