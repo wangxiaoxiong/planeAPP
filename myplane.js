@@ -47,7 +47,10 @@ class MyPlane{
 				//case 90 : _this.shut=true;
 			}			
 		}*/
-		touch.on("document","touchdrag",function(e){
+		touch.on("document","touchstart",function(e){
+			console.log(1)
+		})
+		/*touch.on("document","touchdrag",function(e){
 			var e = e || event;
 			var x = e.clientX-$("#can")[0].offsetLeft-_this.w/4
 			var y = e.clientY-$("#can")[0].offsetTop-_this.h/4
@@ -55,7 +58,7 @@ class MyPlane{
 			y=Math.min( Math.max( 0,y ),$("#can")[0].height-_this.h/2 )
 			_this.x=x
 			_this.y=y
-		})
+		})*/
 		/*document.onmousemove=function(e){
 			var e = e || event;
 			var x = e.clientX-$("can").offsetLeft-_this.w/4
