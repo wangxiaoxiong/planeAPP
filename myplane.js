@@ -47,10 +47,6 @@ class MyPlane{
 				//case 90 : _this.shut=true;
 			}			
 		}*/
-		touch.on($("#can")[0],"touchstart",function(e){
-			e.preventDefault();
-			alert(1)
-		})
 		touch.on($("#can")[0],"touchdrag",function(e){
 			var e = e || event;
 			var x = e.clientX-$("#can")[0].offsetLeft-_this.w/4
