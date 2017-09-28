@@ -47,7 +47,8 @@ class MyPlane{
 				//case 90 : _this.shut=true;
 			}			
 		}*/
-		touch.on("document","touchstart",function(e){
+		touch.on($("#can")[0],"touchstart",function(e){
+			e.preventDefault();
 			alert(1)
 		})
 		/*touch.on("document","touchdrag",function(e){
