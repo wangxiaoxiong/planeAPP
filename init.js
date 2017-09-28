@@ -12,18 +12,18 @@ window.onload=function(){
 		doc.addEventListener('DOMContentLoaded', recalc, false);
 	})(document, window);
 	var pos = 0;
-	var can = $("can")
-	var o2d = can.getContext("2d")
-	can.width=window.innerWidth;
-	can.height=window.innerHeight;
+	var can = $("#can")
+	var o2d = can[0].getContext("2d")
+	can[0].width=window.innerWidth;
+	can[0].height=window.innerHeight;
 	loading( resource,load,success )
 	var plane = new MyPlane();	
-	$("start").onclick=function(){
+	$("#start").click(function(){
 		if( this.innerHTML=="GAME OVER" ){
 			history.go(0)
 		}
 		plane.type=1;
-		$("chose").style.display="none"
+		$("#chose").hide();
 
 		setTimeout(function(){
 			game = setInterval( start,16 )
@@ -34,7 +34,7 @@ window.onload=function(){
 			console.log("boss来了");
 			bigBoss= new BigBoss();
 		},1000*60*5)
-	}
+	})
 	var arrMyBullet=[];
 	var arrEnemy=[];
 	var arrEnemyBullet=[];
@@ -51,7 +51,7 @@ window.onload=function(){
 			setTimeout(function(){
 				if( Math.random()>0.8 ){
 					var addBullet = new AddBullet();
-					addBullet.x=rand( 15,can.width-15)
+					addBullet.x=rand( 15,can[0].width-15)
 					addBullet.y=-50;
 					arrAddBullet.push( addBullet )
 				}				
@@ -61,13 +61,11 @@ window.onload=function(){
 	/*统一绘制*/
 	var start =function(){
 		/*背景图*/
-		$("can").style.backgroundPosition = "0px "+ (++pos) +"px";
-		o2d.clearRect(0,0,can.width,can.height)		
+		/*$("#can").css(backgroundPosition )*/
+		$("#can")[0].style.backgroundPosition = "0px "+ (++pos) +"px";
+		o2d.clearRect(0,0,can[0].width,can[0].height)		
 /*升级子弹*//*升级子弹*//*升级子弹*//*升级子弹*//*升级子弹*//*升级子弹*/
 		if( arrAddBullet.length>0 ){
-			console.log( arrAddBullet )
-			console.log( arrAddBullet[0].x )
-			console.log( arrAddBullet[0].y )
 			for( var i=0;i<arrAddBullet.length;i++ ){
 				arrAddBullet[i].draw(o2d);
 /*碰撞检测之升级子弹*//*碰撞检测之升级子弹*//*碰撞检测之升级子弹*/
@@ -84,9 +82,9 @@ window.onload=function(){
 				arrBossBullet[i].draw(o2d)					
 			if( 
 				arrBossBullet[i].x<-200 ||
-				arrBossBullet[i].x>can.width+200||
+				arrBossBullet[i].x>can[0].width+200||
 				arrBossBullet[i].y<-200 ||
-				arrBossBullet[i].y>can.height+200
+				arrBossBullet[i].y>can[0].height+200
 			){
 				clearInterval( arrBossBullet[i].timer );
 				arrBossBullet[i].flag=false;				
@@ -99,9 +97,9 @@ window.onload=function(){
 			arrBossBulletS[i].draw(o2d)
 			if(
 				arrBossBulletS[i].x<-20 ||
-				arrBossBulletS[i].x>can.width+20||
+				arrBossBulletS[i].x>can[0].width+20||
 				arrBossBulletS[i].y<-20 ||
-				arrBossBulletS[i].y>can.height+20
+				arrBossBulletS[i].y>can[0].height+20
 			){
 				clearInterval( arrBossBulletS[i].timer )
 			}
@@ -135,13 +133,13 @@ window.onload=function(){
 /*敌机起飞*//*敌机起飞*//*敌机起飞*//*敌机起飞*//*敌机起飞*//*敌机起飞*/
 		if( bossFlag&&Math.random()<0.01 ){
 			var enemy = new Enemy(rand(1,8));
-			enemy.x=rand( 0,can.width-100 )
+			enemy.x=rand( 0,can[0].width-100 )
 			arrEnemy.push( enemy )		
 		}
 /*敌机生成*//*敌机生成*//*敌机生成*//*敌机生成*//*敌机生成*//*敌机生成*/
 		for( var i=0;i<arrEnemy.length;i++ ){
 			arrEnemy[i].draw(o2d)	
-			if(arrEnemy[i].y>can.height+100){ /*超出清除*//*超出清除*/				
+			if(arrEnemy[i].y>can[0].height+100){ /*超出清除*//*超出清除*/				
 				clearInterval( arrEnemy[i].timer )
 				arrEnemy.splice(i,1)
 			}
@@ -171,9 +169,9 @@ window.onload=function(){
 			arrEnemyBullet[i].draw(o2d)
 			if( 
 				arrEnemyBullet[i].x<-10|| 
-				arrEnemyBullet[i].x>can.width+10||
+				arrEnemyBullet[i].x>can[0].width+10||
 				arrEnemyBullet[i].y<-10||
-				arrEnemyBullet[i].y>can.height+10 
+				arrEnemyBullet[i].y>can[0].height+10 
 			){	/*超出清除*//*超出清除*//*超出清除*//*超出清除*//*超出清除*/
 				clearInterval( arrEnemyBullet[i].timer )
 				arrEnemyBullet.splice(i,1)
@@ -290,8 +288,8 @@ window.onload=function(){
 			dieEnemy.y=plane.y
 			arrDieEnemy.push( dieEnemy )
 			clearInterval( game )
-			$("chose").style.display="block"				
-			$("start").innerHTML="GAME OVER"
+			$("#chose").show();				
+			$("#start").html("GAME OVER")
 		}
 /*碰撞检测之敌方子弹与本机*//*碰撞检测之敌方子弹与本机*//*碰撞检测之敌方子弹与本机*/	for( var i=0;i<arrEnemyBullet.length;i++ ){
 			if( plane.isIn( arrEnemyBullet[i].x,arrEnemyBullet[i].y ) ){

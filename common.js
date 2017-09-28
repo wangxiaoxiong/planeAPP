@@ -22,10 +22,7 @@ function load(a,b){
 	//console.log( a/b*100+"%" )
 }
 function success(){
-	$("load").style.display="none"
-}
-function $(id){
-	return document.getElementById(id)
+	$("#load").hide();
 }
 function rand(min,max){
 	return Math.floor( Math.random()*(max-min+1)+min )

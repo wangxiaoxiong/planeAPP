@@ -47,18 +47,15 @@ class MyPlane{
 				//case 90 : _this.shut=true;
 			}			
 		}*/
-		/*touch.addEventListener("touchstart",function(){
-			console.log(1)
-		})*/
-		$("can").touchmove=function(e){
+		touch.on("document","touchdrag",function(e){
 			var e = e || event;
-			var x = e.clientX-$("can").offsetLeft-_this.w/4
-			var y = e.clientY-$("can").offsetTop-_this.h/4
-			x=Math.min( Math.max( 0,x ),$("can").width-_this.w/2 )
-			y=Math.min( Math.max( 0,y ),$("can").height-_this.h/2 )
+			var x = e.clientX-$("#can")[0].offsetLeft-_this.w/4
+			var y = e.clientY-$("#can")[0].offsetTop-_this.h/4
+			x=Math.min( Math.max( 0,x ),$("#can")[0].width-_this.w/2 )
+			y=Math.min( Math.max( 0,y ),$("#can")[0].height-_this.h/2 )
 			_this.x=x
 			_this.y=y
-		}
+		})
 		/*document.onmousemove=function(e){
 			var e = e || event;
 			var x = e.clientX-$("can").offsetLeft-_this.w/4
